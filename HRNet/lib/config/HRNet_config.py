@@ -29,7 +29,8 @@ def load_config(config_file):
     with open(config_file, "r") as fd:
         config = yaml.safe_load(fd)
     # merge 2 dict
-    config = default_dict | config
+    # config = default_dict | config
+    config = dict(list(default_dict.items()) + list(config.items()))
     # config = config | default_dict
     config['DATASET']['ROOT'] = os.path.join(config['DATA_DIR'], config['DATASET']['ROOT'])
     config['MODEL']['PRETRAINED'] = os.path.join(config['DATA_DIR'], config['MODEL']['PRETRAINED'])

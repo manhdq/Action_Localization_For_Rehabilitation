@@ -2,7 +2,7 @@
 init_rand_seed: 1234567891
 # dataset loader, specify the dataset here
 dataset_name: epic
-devices: ['cuda:1']  # default: single GPU
+devices: ['cuda:0']  # default: single GPU
 train_split: valid
 val_split: test
 model_name: LocPointTransformer

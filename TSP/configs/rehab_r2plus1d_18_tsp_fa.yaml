@@ -9,7 +9,7 @@ devices: ['cuda:0']
 
 # released_checkpoint: 'r2plus1d_34-tsp_on_thumos14'
 # local_checkpoint: ~
-ckpt: TSP/output/r2plus1d_18-tsp_on_rehab/stem_0.01-backbone_0.01-fc_0.01/epoch_12.pth
+ckpt: TSP/ckpts/r2plus1d_18-tsp_on_rehab.pth
 
 clip_len: 16
 frame_rate: 15

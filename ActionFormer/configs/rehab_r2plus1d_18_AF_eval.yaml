@@ -54,7 +54,7 @@ test_cfg: {
   # comment out L47-48 and uncomment L50 to disable score fusion
   multiclass_nms: True,
 }
-ckpt: 'ActionFormer/runs/ckpt/rehab_r2plus1d_18_AF_train_2022-06-06/epoch_034.pth.tar'  # path to a checkpoint
+ckpt: 'ActionFormer/ckpts/rehab_r2plus1d_18.pth.tar'  # path to a checkpoint
 topk: -1  # max number of output actions
 saveonly: False  # Only save the ouputs without evaluation
 print_freq: 10  # print frequency

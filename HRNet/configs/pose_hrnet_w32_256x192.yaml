@@ -26,7 +26,7 @@ MODEL:
   INIT_WEIGHTS: true
   NAME: pose_hrnet
   NUM_JOINTS: 17
-  PRETRAINED: 'HRNet/models/pytorch/pose_coco/pose_hrnet_w32_256x192.pth'
+  PRETRAINED: 'HRNet/ckpts/pose_hrnet_w32_256x192.pth'
   TARGET_TYPE: gaussian
   IMAGE_SIZE:
   - 192
@@ -112,7 +112,7 @@ TEST:
   BBOX_THRE: 1.0
   IMAGE_THRE: 0.0
   IN_VIS_THRE: 0.2
-  MODEL_FILE: 'HRNet/models/pytorch/pose_coco/pose_hrnet_w32_256x192.pth'
+  MODEL_FILE: 'HRNet/ckpts/pose_hrnet_w32_256x192.pth'
   NMS_THRE: 1.0
   OKS_THRE: 0.9
   USE_GT_BBOX: true

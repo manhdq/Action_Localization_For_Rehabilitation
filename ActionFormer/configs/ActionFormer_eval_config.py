@@ -14,7 +14,10 @@ def _merge(src, dst):
 
 def load_default_config():
     with open(DEFAULTS_CONFIG, 'r') as fd:
-        config = yaml.load(fd, Loader=yaml.FullLoader)
+        try:
+            config = yaml.load(fd, Loader=yaml.FullLoader)
+        except:
+            config = yaml.load(fd)
     return config
 
 def _update_config(config):
@@ -29,7 +32,10 @@ def _update_config(config):
 def load_config(config_file):
     defaults = load_default_config()
     with open(config_file, "r") as fd:
-        config = yaml.load(fd, Loader=yaml.FullLoader)
+        try:
+            config = yaml.load(fd, Loader=yaml.FullLoader)
+        except:
+            config = yaml.load(fd)
     _merge(defaults, config)
     config = _update_config(config)
     return config
