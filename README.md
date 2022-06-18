@@ -22,7 +22,7 @@ The problems of rehabilitation are always necessary while the human resources an
   ```
   pip install -r requirements.txt
   ```
- 
+  
 ## Main results on rehabilitation custom data
 | Arch                                                        | mAP@tIoU0.5 | mAP@tIoU0.6 | mAP@tIoU0.7 | mAP@tIoU0.8 | mAP@tIoU0.9 | mAP@tIoU.3-.9 |
 |-------------------------------------------------------------|-------------|-------------|-------------|-------------|-------------|---------------|
@@ -33,10 +33,11 @@ The problems of rehabilitation are always necessary while the human resources an
  
 Model checkpoints
 
-| Arch                                                        | Heatmaps Extractor | Patch Features Extractor | Temporal Action Localizor |
-|-------------------------------------------------------------|--------------------|
-| HR-R(2+1)D18-ActionFormer                                   | OneDrive        |
-| HR-R(2+1)D12-ActionFormer                                   | 96.9        |
-| **HR-R(2+1)D12-ActionFormer**<br><sup>(expansion ratio 1.5) | 97.0        |
+| Arch                                                        | Heatmaps Extractor     | Patch Features Extractor | Temporal Action Localizor |
+|-------------------------------------------------------------|------------------------|--------------------------|---------------------------|
+| HR-R(2+1)D18-ActionFormer                                   | OneDrive / GoogleDrive | OneDrive / GoogleDrive   | OneDrive / GoogleDrive    |
+| HR-R(2+1)D12-ActionFormer                                   | OneDrive / GoogleDrive | OneDrive / GoogleDrive   | OneDrive / GoogleDrive    |
+| **HR-R(2+1)D12-ActionFormer**<br><sup>(expansion ratio 1.5) | OneDrive / GoogleDrive | OneDrive / GoogleDrive   | OneDrive / GoogleDrive    |
+| LiteHR-R(2+1)D12-ActionFormer<br><sup>(expansion ratio 1.5) | OneDrive / GoogleDrive | OneDrive / GoogleDrive   | OneDrive / GoogleDrive    |
   
 ## Testing
