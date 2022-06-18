@@ -1,0 +1,79 @@
+root_dir: /content/drive/Shareddrives/TAD_For_Rehabilitation/dataset/heatmap_npy_raw  # Path to root directory containing the videos files
+train_subdir: ''  # Training subdirectory inside the root directory
+valid_subdir: ''  # Validation subdirectory inside the root directory
+train_csv_filename: dataset/annotations/train_tsp_groundtruth.csv  # Path to the training CSV file
+valid_csv_filename: dataset/annotations/test_tsp_groundtruth.csv  # Path to the validation CSV file
+label_columns: ['action-label', 'temporal-region-label']  # Names of the label columns in the CSV files
+label_mapping_jsons: ['dataset/annotations/action_label_mapping.json', 'dataset/annotations/temporal_region_label_mapping.json']  # Path to the mapping of each label column
+loss_alphas: [1.0, 1.0]  # A list of the scalar alpha with which to weight each label loss
+global_video_features: ~  # Path to the h5 file containing global video features (GVF). If not given, then train without GVF.
+
+backbone: 'r2plus1d_12'  # Encoder backbone architecture (default r2plus1d_34). Supported backbones are r2plus1d_34, r2plus1d_18, and r3d_18
+device: 'cuda:0'  # Device to train on
+
+# Choose the appropriate batch size downscale factor for your GPU memory size
+# DOWNSCALE_FACTOR=1 --> a 32G memory GPU (default)
+# DOWNSCALE_FACTOR=2 --> a 16G memory GPU
+# DOWNSCALE_FACTOR=4 --> a 8G memory GPU
+downscale_factor: 4
+
+clip_len: 16  # Number of frames per clip
+frame_rate: 15  # Frames-per-second rate at which the videos are sampled
+clips_per_segment: 5  # Number of clips sampled per video segment
+batch_size: 32  # Batch size per GPU
+workers: 8  # Number of data loading workers
+
+epochs: 8  # Number of total epochs to run
+stem_lr: 0.01
+backbone_lr: 0.01  # Backbone layers learning rate
+fc_lr: 0.01  # Fully-connected classifiers learning rate
+lr_warmup_epochs: 2  # Number of warmup epochs
+lr_milestones: [4, 6]  # Decrease lr on milestone epoch
+lr_gamma: 0.01  # Decrease lr by a factor of lr-gamma at each milestone epoch
+momentum: 0.9  # Momentum
+weight_decay: 0.005  # Weight decay
+
+valid_only: False  # Test the model on the validation subset and exit
+train_only_one_epoch: False  # Train the model for only one epoch without testing on validation subset
+
+print_freq: 100  # Print frequency in number of batches
+output_dir: ~  # Path for saving checkpoints and results output
+resume: ''  # Resume from checkpoint
+
+start_epoch: 0  # Start epoch
+
+dist_url: 'env://'  # URL used to set up distributed training
+sync_bn: False  # Use sync batch norm
+
+ignored_vids: [  # List of videos will be ignored
+    
+]
+
+# 0: 'nose'
+# 1: 'left_eye'
+# 2: 'right_eye'
+# 3: 'left_ear'
+# 4: 'right_ear'
+# 5: 'left_shoulder'
+# 6: 'right_shoulder'
+# 7: 'left_elbow'
+# 8: 'right_elbow'
+# 9: 'left_wrist'
+# 10: 'right_wrist'
+# 11: 'left_hip'
+# 12: 'right_hip'
+# 13: 'left_knee'
+# 14: 'right_knee'
+# 15: 'left_ankle'
+# 16: 'right_ankle'
+kpts_accept: [5,6,7,8,9,10,11,12,13,14]
+
+debug: False  # Run the training over 100 samples only with batch size of 4
+
+# ==========
+# Features Extractor
+# ==========
+# output_features_dir: ./data/r2plus1d_34-tsp_on_thumos14_features/stride_16/
+output_features_dir: ~
+shard_id: 0
+num_shards: 1

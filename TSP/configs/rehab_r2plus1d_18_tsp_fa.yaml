@@ -1,0 +1,42 @@
+data_dir: 'datataset/heatmap_npy'
+metadata_csv_filename: dataset/annotations/test_metadata.csv
+action_mapping_file: dataset/annotations/action_label_mapping.json
+
+output_dir: dataset/TSP_featuress
+
+backbone: 'r2plus1d_18'
+devices: ['cuda:0']
+
+# released_checkpoint: 'r2plus1d_34-tsp_on_thumos14'
+# local_checkpoint: ~
+ckpt: TSP/output/r2plus1d_18-tsp_on_rehab/stem_0.01-backbone_0.01-fc_0.01/epoch_12.pth
+
+clip_len: 16
+frame_rate: 15
+stride: 16
+
+batch_size: 32
+workers: 6
+
+# 0: 'nose'
+# 1: 'left_eye'
+# 2: 'right_eye'
+# 3: 'left_ear'
+# 4: 'right_ear'
+# 5: 'left_shoulder'
+# 6: 'right_shoulder'
+# 7: 'left_elbow'
+# 8: 'right_elbow'
+# 9: 'left_wrist'
+# 10: 'right_wrist'
+# 11: 'left_hip'
+# 12: 'right_hip'
+# 13: 'left_knee'
+# 14: 'right_knee'
+# 15: 'left_ankle'
+# 16: 'right_ankle'
+kpts_accept: [5,6,7,8,9,10,11,12,13,14]
+
+# output_dir: ./data/r2plus1d_34-tsp_on_thumos14_features/stride_16/
+shard_id: 0
+num_shards: 1

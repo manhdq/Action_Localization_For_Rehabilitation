@@ -1,0 +1,70 @@
+root_dir: data/thumos14  # Path to root directory containing the videos files
+train_subdir: valid  # Training subdirectory inside the root directory
+valid_subdir: test  # Validation subdirectory inside the root directory
+train_csv_filename: data/thumos14/thumos14_valid_tsp_groundtruth.csv  # Path to the training CSV file
+valid_csv_filename: data/thumos14/thumos14_test_tsp_groundtruth.csv  # Path to the validation CSV file
+label_columns: ['action-label', 'temporal-region-label']  # Names of the label columns in the CSV files
+label_mapping_jsons: ['data/thumos14/thumos14_action_label_mapping.json', 'data/thumos14/thumos14_temporal_region_label_mapping.json']  # Path to the mapping of each label column
+loss_alphas: [1.0, 1.0]  # A list of the scalar alpha with which to weight each label loss
+global_video_features: data/thumos14/global_video_features/r2plus1d_34-max_gvf.h5  # Path to the h5 file containing global video features (GVF). If not given, then train without GVF.
+
+backbone: 'r2plus1d_18'  # Encoder backbone architecture (default r2plus1d_34). Supported backbones are r2plus1d_34, r2plus1d_18, and r3d_18
+device: cpu  # Device to train on
+
+# Choose the appropriate batch size downscale factor for your GPU memory size
+# DOWNSCALE_FACTOR=1 --> a 32G memory GPU (default)
+# DOWNSCALE_FACTOR=2 --> a 16G memory GPU
+# DOWNSCALE_FACTOR=4 --> a 8G memory GPU
+downscale_factor: 4
+
+clip_len: 16  # Number of frames per clip
+frame_rate: 15  # Frames-per-second rate at which the videos are sampled
+clips_per_segment: 5  # Number of clips sampled per video segment
+batch_size: 32  # Batch size per GPU
+workers: 8  # Number of data loading workers
+
+epochs: 8  # Number of total epochs to run
+stem_lr: 0
+backbone_lr: 0.0001  # Backbone layers learning rate
+fc_lr: 0.002  # Fully-connected classifiers learning rate
+lr_warmup_epochs: 2  # Number of warmup epochs
+lr_milestones: [4, 6]  # Decrease lr on milestone epoch
+lr_gamma: 0.01  # Decrease lr by a factor of lr-gamma at each milestone epoch
+momentum: 0.9  # Momentum
+weight_decay: 0.005  # Weight decay
+
+valid_only: False  # Test the model on the validation subset and exit
+train_only_one_epoch: False  # Train the model for only one epoch without testing on validation subset
+
+print_freq: 100  # Print frequency in number of batches
+output_dir: ~  # Path for saving checkpoints and results output
+resume: ''  # Resume from checkpoint
+start_epoch: 0  # Start epoch
+
+dist_url: 'env://'  # URL used to set up distributed training
+sync_bn: False  # Use sync batch norm
+
+ignored_vids: [  # List of videos will be ignored
+    'video_validation_0000311.mp4',
+    'video_validation_0000411.mp4',
+    'video_validation_0000413.mp4',
+    'video_validation_0000419.mp4',
+    'video_validation_0000420.mp4',
+    'video_validation_0000484.mp4',
+    'video_validation_0000666.mp4',
+    'video_test_0000950.mp4',
+    'video_test_0001058.mp4',
+    'video_test_0001195.mp4',
+    'video_test_0001207.mp4',
+    'video_test_0001255.mp4',
+    'video_test_0001459.mp4',
+]
+debug: False  # Run the training over 100 samples only with batch size of 4
+
+# ==========
+# Features Extractor
+# ==========
+# output_features_dir: ./data/r2plus1d_34-tsp_on_thumos14_features/stride_16/
+output_features_dir: ~
+shard_id: 0
+num_shards: 1
