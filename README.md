@@ -13,25 +13,6 @@ Model overview
 </div>
 
 <br>
-
-## Quick start
-1. Clone this repo
-  ```
-  git clone https://github.com/manhdqhe153129/Action_Localization_For_Rehabilitation.git
-  ```
-  
-2. Set up NMS algorithm is implemented in C++ for Temporal Action Localizor stage
-  ```
-  cd ./ActionFormer/libs/utils
-  python setup.py install --user
-  cd ../../..
-  ```
-  The code should be recompiled every time you update PyTorch
-  
-3. Install dependencies
-  ```
-  pip install -r requirements.txt
-  ```
   
 ## Main results on rehabilitation custom data
 | Arch                                                        | mAP@tIoU0.5 | mAP@tIoU0.6 | mAP@tIoU0.7 | mAP@tIoU0.8 | mAP@tIoU0.9 | mAP@tIoU.3-.9 |
