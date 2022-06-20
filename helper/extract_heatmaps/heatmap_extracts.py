@@ -132,7 +132,8 @@ class HRNetHeatmapExtractor:
             ret, image_bgr = vidcap.read()
             if ret:
                 count += 1
-                print(count)
+                if count % 100 == 0:
+                    print(f"Extracted {count} heatmaps features")
                 # if count > 80:
                 #     break
                 img_shape = [image_bgr.shape[1], image_bgr.shape[0]]
@@ -183,7 +184,7 @@ class HRNetHeatmapExtractor:
                     out_hm_full.write(np.stack([heatmap_img]*3, axis=-1))
     
             else:
-                break
+                print("Heatmaps Extraction: Done!")
 
         cv2.destroyAllWindows()
         vidcap.release()
