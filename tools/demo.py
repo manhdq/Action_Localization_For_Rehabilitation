@@ -193,7 +193,7 @@ if __name__ == '__main__':
                         help='path to a HRNet config file')
     parser.add_argument('--HRNet-ckpt', metavar='DIR', help='path to HRNet ckpt')
     # TSP/configs/rehab_r2plus1d_12_tsp_fa.yaml
-    parser.add_argument('--TSP-config', metavar='DIR', default='TSP/configs/rehab_r2plus1d_12_tsp_fa.yaml'
+    parser.add_argument('--TSP-config', metavar='DIR', default='TSP/configs/rehab_r2plus1d_12_tsp_fa.yaml',
                         help='path to a TSP config file')
     parser.add_argument('--TSP-ckpt', metavar='DIR', help='path to TSP ckpt')
     # ActionFormer/configs/rehab_r2plus1d_12_expansion_AF_eval.yaml

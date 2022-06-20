@@ -13,7 +13,6 @@ Model overview
 </div>
 
 <br>
-<<<<<<< HEAD
 
 ## Quick start
 1. Clone this repo
@@ -33,8 +32,6 @@ Model overview
   ```
   pip install -r requirements.txt
   ```
-=======
->>>>>>> f8b4b2e500d0c5480cd907f3dac87e0072957524
   
 ## Main results on rehabilitation custom data
 | Arch                                                        | mAP@tIoU0.5 | mAP@tIoU0.6 | mAP@tIoU0.7 | mAP@tIoU0.8 | mAP@tIoU0.9 | mAP@tIoU.3-.9 |
