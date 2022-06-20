@@ -204,3 +204,6 @@ if __name__ == '__main__':
     # parser.add_argument('--TSP-bs', type=int, default=128, help='batch size for features extraction stage')
     parser.add_argument('--metadata', type=str, help='path to video metadata for debug')
     args = parser.parse_args()
+
+    args.TSP_bs = 16
+    main(args)
