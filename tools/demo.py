@@ -50,14 +50,20 @@ def main(args):
     # sanity check
     if os.path.isfile(args.HRNet_config):
         HRNet_cfg = HRNet_load_config(args.HRNet_config)
+        if args.HRNet_ckpt is not None:
+            HRNet_cfg['TEST']['MODEL_FILE'] = args.HRNet_ckpt
     else:
         raise ValueError("TSP config file does not exist.")
     if os.path.isfile(args.TSP_config):
         TSP_cfg = TSP_load_config(args.TSP_config)
+        if args.TSP_ckpt is not None:
+            TSP_cfg['ckpt'] = args.TSP_ckpt
     else:
         raise ValueError("TSP config file does not exist.")
     if os.path.isfile(args.ActionFormer_config):
         AF_cfg = AF_load_config(args.ActionFormer_config)
+        if args.ActionFormer_ckpt is not None:
+            AF_cfg['ckpt'] = args.ActionFormer_ckpt
     else:
         raise ValueError("ActionFormer config file does not exist.")
 
@@ -183,16 +189,21 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
       description='Train a point-based transformer for action localization')
     # HRNet/configs/pose_hrnet_w32_256x192.yaml
-    parser.add_argument('--HRNet-config', metavar='DIR',
+    parser.add_argument('--HRNet-config', metavar='DIR', default='HRNet/configs/pose_hrnet_w32_256x192.yaml',
                         help='path to a HRNet config file')
-    # TSP/configs/rehab_r2plus1d_18_tsp_fa.yaml
-    parser.add_argument('--TSP-config', metavar='DIR',
+    parser.add_argument('--HRNet-ckpt', metavar='DIR', help='path to HRNet ckpt')
+    # TSP/configs/rehab_r2plus1d_12_tsp_fa.yaml
+    parser.add_argument('--TSP-config', metavar='DIR', default='TSP/configs/rehab_r2plus1d_12_tsp_fa.yaml'
                         help='path to a TSP config file')
-    # ActionFormer/configs/rehab_r2plus1d_18_AF_eval.yaml
-    parser.add_argument('--ActionFormer-config', metavar='DIR',
+    parser.add_argument('--TSP-ckpt', metavar='DIR', help='path to TSP ckpt')
+    # ActionFormer/configs/rehab_r2plus1d_12_expansion_AF_eval.yaml
+    parser.add_argument('--ActionFormer-config', metavar='DIR', default='ActionFormer/configs/rehab_r2plus1d_12_expansion_AF_eval.yaml',
                         help='path to a ActionFormer config file')
+    parser.add_argument('--ActionFormer-ckpt', metavar='DIR', help='path to ActionFormer ckpt')
     parser.add_argument('--video', type=str, help='path to video file')
-    parser.add_argument('--TSP-bs', type=int, default=128, help='batch size for features extraction stage')
+    # parser.add_argument('--TSP-bs', type=int, default=128, help='batch size for features extraction stage')
     parser.add_argument('--metadata', type=str, help='path to video metadata for debug')
     args = parser.parse_args()
+
+    args.TSP_bs = 16
     main(args)

@@ -4,6 +4,16 @@
 ## Introduction
 The problems of rehabilitation are always necessary while the human resources and economic conditions, the current labors machines are still limited, and some of the problems can be partly solved by automatically supporting motion recognition and supervision in rehabilitation for patients. There are methods for recognizing different behaviors and movements, but they are not many and difficult to apply to the current problem, especially similar specific methods in healthcare are almost non-existent, not to mention data related to this problem is very rare. almost all of them are confidential and are really lacking (it can be said that they don't exist). Therefore, in this study, I propose a 3-stages model: **Human Heatmaps Extractor**, **Patch Features Extractor**, and **Temporal Action Localizor**, using reasonable data augmentation methods, the model can learn generally from only limited datasets.
 
+<br>
+
+<div align="center">
+    <img src="./images/model_overview.png" width="600px" alt><br>
+Model overview
+
+</div>
+
+<br>
+
 ## Quick start
 1. Clone this repo
   ```
@@ -41,3 +51,14 @@ Model checkpoints
 | LiteHR-R(2+1)D12-ActionFormer<br><sup>(expansion ratio 1.5) | OneDrive / GoogleDrive | OneDrive / GoogleDrive   | OneDrive / GoogleDrive    |
   
 ## Testing
+  
+
+<br>
+
+<div align="center">
+    <img src="./images/output_demo.gif" width="600px" alt><br>
+Output demo
+
+</div>
+
+<br>
