@@ -201,16 +201,6 @@ if __name__ == '__main__':
                         help='path to a ActionFormer config file')
     parser.add_argument('--ActionFormer-ckpt', metavar='DIR', help='path to ActionFormer ckpt')
     parser.add_argument('--video', type=str, help='path to video file')
-<<<<<<< HEAD
     # parser.add_argument('--TSP-bs', type=int, default=128, help='batch size for features extraction stage')
     parser.add_argument('--metadata', type=str, help='path to video metadata for debug')
     args = parser.parse_args()
-
-    args.TSP_bs = 16
-    main(args)
-=======
-    parser.add_argument('--TSP-bs', type=int, default=32, help='batch size for features extraction stage')
-    parser.add_argument('--metadata', type=str, help='path to video metadata for debug')
-    args = parser.parse_args()
-    main(args)
->>>>>>> f8b4b2e500d0c5480cd907f3dac87e0072957524
